@@ -8,6 +8,7 @@
     <title>Todo App</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,7 +42,7 @@
             <div class="panel-footer clearfix">
                 <!-- SHORTCUT: div.panel-footer -->
                 <!-- clearfix is fix for button not lining up correctly -->
-                <button class="btn btn-primary pull-left" ng-click="home.getTodoes()">Add Todo</button>
+                <button class="btn btn-primary pull-left" ng-click="home.create()">Add Todo</button>
             </div>
         </div>
         <div class="filters" style="margin-bottom: 70px;">
@@ -55,7 +56,11 @@
             <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
             <div class="panel-heading panel-info">
                 <!-- TODO: Review how to filter in norma values (i.e. high, medium, low) rather than exact class names -->
-                {{todo.name}}
+                <label ng-hide="editing" class="editing-label">{{todo.name}}</label>
+                <input type="text" ng-show="editing" ng-model="todo.name" class="editing-label">&nbsp;&nbsp;&nbsp;
+                <button type="button" ng-hide="editing" ng-click="editing=!editing" class="btn btn-primary btn-sm" style="padding: 2px;">Edit</button>
+                <button type="button" ng-show="editing" ng-click="home.update(todo); editing=!editing" class="btn btn-primary btn-sm" style="padding: 2px;">Save</button>
+                <button type="button" ng-click="home.remove(todo)" class="btn btn-danger btn-sm" style="float: right;padding: 2px 5px;">X</button>
             </div>
         </div>
     </div>
@@ -65,6 +70,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="bower_components/angular/angular.js"></script>
     <!-- SHORTCUT: script:src -->
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/core/todo.factory.js"></script>
     <script src="app/core/todo/todo.controller.js"></script>

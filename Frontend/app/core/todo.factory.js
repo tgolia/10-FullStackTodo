@@ -10,10 +10,11 @@
     function todoFactory($http) {
         var vm = this;
         var service = {
-            addTodo     : addTodo,
-            getTodoes   : getTodoes,
-            updateTodo  : updateTodo,
-            deleteTodo  : deleteTodo
+            create   : create,
+            getAll   : getAll,
+            getById  : getById,
+            update   : update,
+            remove   : remove
         };
 
 
@@ -21,24 +22,27 @@
 
         ///////////////////
 
-        function addTodo(newTodo) {
-            return $http.post('localhost:58046/api/Todo',newTodo);
+        function create(todo) {
+            // $http.post(<url>,<data>,[<options>]
+
+            return $http.post('http://localhost:58046/api/Todo',todo);
         }
 
-        function getTodoes() {
-            return $http.get('http://localhost:58046/api/Todo', {
-                headers: {
-                    'Access-Control-Allow-Origin': 'http://localhost:58046/api/Todo'
-                }
-            });
+        function getAll() {
+            return $http.get('http://localhost:58046/api/Todo');
         }
 
-        function updateTodo(todo) {
-            return $http.put('localhost:58046/api/Todo/'+todo.TodoId, todo);
+
+        function getById(id) {
+            return $http.get('http://localhost:58046/api/Todo/'+id);
         }
 
-        function deleteTodo(todo) {
-            return $http.delete('localhost:58046/api/Todo/'+todo.TodoId); 
+        function update(id, todo) {
+            return $http.put('http://localhost:58046/api/Todo/'+id, todo);
+        }
+
+        function remove(id) {
+            return $http.delete('http://localhost:58046/api/Todo/'+id); 
         }
     }
 })();

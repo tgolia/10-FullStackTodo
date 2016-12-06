@@ -9,11 +9,12 @@ namespace VSTDA.Api.Intrastructure
 {
     public class TodoDataContext : DbContext
     {
-        public TodoDataContext() : base("Todoes")
+        // Constructor (there's a shortcut)
+        public TodoDataContext() : base("Todoes") // This is where you set the name of the SQL database
         {
 
         }
-
+        // <access> <type> <name> { get; set; }
         public IDbSet<Todo> Todoes { get; set; }
             
     }
