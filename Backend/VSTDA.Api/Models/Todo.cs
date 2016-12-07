@@ -11,7 +11,6 @@ namespace VSTDA.Api.Models
         public int TodoId { get; set; }
         public string Name { get; set; }
         public int Priority { get; set; }
-        public bool? IsHighPriority { get; set; }
         public DateTime? CreatedAt { get; set; }
 
     }

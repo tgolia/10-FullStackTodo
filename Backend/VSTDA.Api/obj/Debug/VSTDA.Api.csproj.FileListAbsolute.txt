@@ -95,3 +95,4 @@ C:\Users\Travis\Dev\10-FullStackTodo\Backend\VSTDA.Api\obj\Debug\VSTDA.Api.Migra
 C:\Users\Travis\Dev\10-FullStackTodo\Backend\VSTDA.Api\obj\Debug\VSTDA.Api.csproj.GenerateResource.Cache
 C:\Users\Travis\Dev\10-FullStackTodo\Backend\VSTDA.Api\obj\Debug\VSTDA.Api.dll
 C:\Users\Travis\Dev\10-FullStackTodo\Backend\VSTDA.Api\obj\Debug\VSTDA.Api.pdb
+C:\Users\Travis\Dev\10-FullStackTodo\Backend\VSTDA.Api\obj\Debug\VSTDA.Api.Migrations.RemoveBoolean.resources

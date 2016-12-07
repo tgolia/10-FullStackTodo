@@ -12,9 +12,9 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </head>
 
 <body>
@@ -32,12 +32,13 @@
                 <input name="" ng-model="home.newTodo.name" id="" cols="30" class="form-control" placeholder="Enter new todo item here">
                 </input>
                 <!-- SHORTCUT: textarea.form-control -->
-                <select name="" id="" cols="30" class="form-control" ng-model="home.newTodo.priority">
-                    <option value="" disabled selected>--- Select Priority ---</option>
-                    <option value=3>Low</option>
-                    <option value=2>Medium</option>
-                    <option value=1>High</option>
-                </select>
+<!--                 <select name="" id="" cols="30" class="form-control" ng-model="home.newTodo.priority">
+                    <option value="" disabled selected>--- Select Priority ---</option> -->
+                    <br><p>Please select a priority:</p>
+                    <input type="radio" value=3 ng-model="home.newTodo.priority"> Low</input>&nbsp;&nbsp;
+                    <input type="radio" value=2 ng-model="home.newTodo.priority"> Medium</input>&nbsp;&nbsp;
+                    <input type="radio" value=1 ng-model="home.newTodo.priority"> High</input>
+<!--                 </select> -->
             </div>
             <div class="panel-footer clearfix">
                 <!-- SHORTCUT: div.panel-footer -->
@@ -57,14 +58,16 @@
             <div class="panel-heading panel-info">
                 <!-- TODO: Review how to filter in norma values (i.e. high, medium, low) rather than exact class names -->
                 <label ng-click="editing = true" ng-hide="editing" class="editing-label">{{todo.name}}</label>
-                <input type="text" ng-show="editing" ng-blur="editing = false; home.update(todo);" ng-model="todo.name" class="editing-label">
+                <input type="text" ng-show="editing" ng-model="todo.name" class="editing-label">
+                <span ng-show="editing">
+                <input type="radio" value=3 ng-selected="home.isSelected(todo, 3)" ng-model=todo.priority> Low</input>&nbsp;&nbsp;
+                <input type="radio" value=2 ng-selected="home.isSelected(todo, 2)" ng-model=todo.priority> Medium</input>&nbsp;&nbsp;
+                <input type="radio" value=1 ng-selected="home.isSelected(todo, 1)" ng-model=todo.priority> High</input>
+                </span>
                 <!-- <span ng-show="edited">EDITED</span> -->
-                <button type="button" ng-click="home.remove(todo)" class="btn btn-danger btn-sm" 
-                style="float: right;padding: 2px 5px;">X</button>
-                <button type="button" ng-hide="editing" ng-click="editing=!editing" 
-                class="btn btn-primary btn-sm" style="padding: 2px;float: left; margin-right: 20px;">Edit</button>
-                <button type="button" ng-show="editing" ng-click="home.update(todo); editing=!editing" 
-                class="btn btn-primary btn-sm" style="padding: 2px; float: left; margin-right: 20px;">Save</button>
+                <button type="button" ng-click="home.remove(todo)" class="btn btn-danger btn-sm" style="float: right;padding: 2px 5px;">X</button>
+                <button type="button" ng-hide="editing" ng-click="editing=!editing" class="btn btn-primary btn-sm" style="padding: 2px;float: left; margin-right: 20px;">Edit</button>
+                <button type="button" ng-show="editing" ng-click="home.update(todo); editing=!editing" class="btn btn-primary btn-sm" style="padding: 2px; float: left; margin-right: 20px;">Save</button>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
         .module('todo-app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['todoFactory','toastr'];
+    HomeController.$inject = ['todoFactory', 'toastr'];
 
     /* @ngInject */
     function HomeController(todoFactory, toastr) {
@@ -43,18 +43,18 @@
 
         function create() {
             if (vm.newTodo.priority == null) {
-                    toastr.error("Please enter a priority");
+                toastr.error("Please enter a priority");
             } else {
-                 todoFactory
-                .create(vm.newTodo)
-                .then(function(response) {
-                    vm.todoes.push(response.data);
-                    vm.newTodo = {};
-                    toastr.success("Add successful");
-                })
-                .catch(function(error) {
-                    toastr.error("Add NOT successful");
-                })
+                todoFactory
+                    .create(vm.newTodo)
+                    .then(function(response) {
+                        vm.todoes.push(response.data);
+                        vm.newTodo = {};
+                        toastr.success("Add successful");
+                    })
+                    .catch(function(error) {
+                        toastr.error("Add NOT successful");
+                    })
             }
         }
 
@@ -74,7 +74,7 @@
                 .remove(todo.todoId)
                 .then(function(response) {
                     var index = vm.todoes.indexOf(todo);
-                    vm.todoes.splice(index,1);
+                    vm.todoes.splice(index, 1);
                     toastr.success("Delete successful");
                 })
                 .catch(function(error) {
@@ -90,5 +90,13 @@
             vm.orderCategory = vm.sortArray[order];
         }
 
+        function isSelected(todo, priority) {
+            console.log(todo.priority);
+            if (todo.priority == priority) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 })();

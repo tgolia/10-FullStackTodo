@@ -139,6 +139,10 @@
     <Compile Include="Migrations\201612060035436_InitialMigration.Designer.cs">
       <DependentUpon>201612060035436_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612071729342_RemoveBoolean.cs" />
+    <Compile Include="Migrations\201612071729342_RemoveBoolean.Designer.cs">
+      <DependentUpon>201612071729342_RemoveBoolean.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,6 +166,9 @@
     <EmbeddedResource Include="Migrations\201612060035436_InitialMigration.resx">
       <DependentUpon>201612060035436_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612071729342_RemoveBoolean.resx">
+      <DependentUpon>201612071729342_RemoveBoolean.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -179,6 +186,8 @@
           <DevelopmentServerPort>59891</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:58046/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:58046/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
