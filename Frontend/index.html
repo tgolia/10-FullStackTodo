@@ -56,11 +56,15 @@
             <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
             <div class="panel-heading panel-info">
                 <!-- TODO: Review how to filter in norma values (i.e. high, medium, low) rather than exact class names -->
-                <label ng-hide="editing" class="editing-label">{{todo.name}}</label>
-                <input type="text" ng-show="editing" ng-model="todo.name" class="editing-label">&nbsp;&nbsp;&nbsp;
-                <button type="button" ng-hide="editing" ng-click="editing=!editing" class="btn btn-primary btn-sm" style="padding: 2px;">Edit</button>
-                <button type="button" ng-show="editing" ng-click="home.update(todo); editing=!editing" class="btn btn-primary btn-sm" style="padding: 2px;">Save</button>
-                <button type="button" ng-click="home.remove(todo)" class="btn btn-danger btn-sm" style="float: right;padding: 2px 5px;">X</button>
+                <label ng-click="editing = true" ng-hide="editing" class="editing-label">{{todo.name}}</label>
+                <input type="text" ng-show="editing" ng-blur="editing = false; home.update(todo);" ng-model="todo.name" class="editing-label">
+                <!-- <span ng-show="edited">EDITED</span> -->
+                <button type="button" ng-click="home.remove(todo)" class="btn btn-danger btn-sm" 
+                style="float: right;padding: 2px 5px;">X</button>
+                <button type="button" ng-hide="editing" ng-click="editing=!editing" 
+                class="btn btn-primary btn-sm" style="padding: 2px;float: left; margin-right: 20px;">Edit</button>
+                <button type="button" ng-show="editing" ng-click="home.update(todo); editing=!editing" 
+                class="btn btn-primary btn-sm" style="padding: 2px; float: left; margin-right: 20px;">Save</button>
             </div>
         </div>
     </div>

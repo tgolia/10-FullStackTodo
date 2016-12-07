@@ -42,17 +42,20 @@
         }
 
         function create() {
-            todoFactory
+            if (vm.newTodo.priority == null) {
+                    toastr.error("Please enter a priority");
+            } else {
+                 todoFactory
                 .create(vm.newTodo)
                 .then(function(response) {
                     vm.todoes.push(response.data);
                     vm.newTodo = {};
-                    //var copy = angular.copy(vm.newTodo); // angular.copy creates clone (deep copying) of object
-                    //vm.todoes.push(copy); // unshift to put at opposite side
+                    toastr.success("Add successful");
                 })
                 .catch(function(error) {
-                    alert('error');
+                    toastr.error("Add NOT successful");
                 })
+            }
         }
 
         function update(todo) {
@@ -62,7 +65,7 @@
                     toastr.success("Save successful");
                 })
                 .catch(function(error) {
-                    toastr.danger("Save NOT successful");
+                    toastr.error("Save NOT successful");
                 })
         }
 
@@ -72,9 +75,10 @@
                 .then(function(response) {
                     var index = vm.todoes.indexOf(todo);
                     vm.todoes.splice(index,1);
+                    toastr.success("Delete successful");
                 })
                 .catch(function(error) {
-                    alert('error');
+                    toastr.error("Delete NOT successful");
                 })
         }
 
